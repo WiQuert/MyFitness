@@ -1,5 +1,6 @@
 package com.wiquert.myfitness
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -16,9 +17,14 @@ class SplashActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-
+                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
             }
 
-        }
+        } .start()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        timer.cancel()
     }
 }
