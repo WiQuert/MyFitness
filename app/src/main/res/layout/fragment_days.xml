@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="5dp"
+    android:background="#9ACAFF"
     tools:context=".fragments.DaysFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcViewDays"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="5dp"
