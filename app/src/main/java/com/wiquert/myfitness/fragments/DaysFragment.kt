@@ -5,8 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.wiquert.myfitness.R
 import com.wiquert.myfitness.adapters.DayModel
+import com.wiquert.myfitness.adapters.DaysAdapter
 import com.wiquert.myfitness.databinding.FragmentDaysBinding
 
 
@@ -23,10 +26,23 @@ class DaysFragment : Fragment() {
     }
 
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initRcView()
+    }
+
+    private fun initRcView() = with(binding) {
+        val adapter = DaysAdapter()
+        rcViewDays.layoutManager = LinearLayoutManager(activity as AppCompatActivity)
+        rcViewDays.adapter = adapter
+        adapter.submitList(fillDaysArray())
+    }
+
+
     private fun fillDaysArray() : ArrayList<DayModel> {
 
         val tArray = ArrayList<DayModel>()
-        resources.getStringArray(R.array.day_execrises).forEach {
+        resources.getStringArray(R.array.day_exercises).forEach {
             tArray.add(DayModel(it, false))
         }
         return tArray
