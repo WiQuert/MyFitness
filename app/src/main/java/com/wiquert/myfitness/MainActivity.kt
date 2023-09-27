@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        if(FragmentManager.currentFragment is DaysFragment) onBackPressedDispatcher.onBackPressed()
+        if(FragmentManager.currentFragment is DaysFragment) super.onBackPressed()
         else FragmentManager.setFragment(DaysFragment.newInstance(), this)
     }
 }
