@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.wiquert.myfitness.R
 import com.wiquert.myfitness.adapters.DayModel
 import com.wiquert.myfitness.adapters.DaysAdapter
+import com.wiquert.myfitness.adapters.ExerciseModel
 import com.wiquert.myfitness.databinding.FragmentDaysBinding
 import com.wiquert.myfitness.utils.FragmentManager
 
@@ -48,6 +49,16 @@ class DaysFragment : Fragment(), DaysAdapter.Listener {
             tArray.add(DayModel(it, false))
         }
         return tArray
+    }
+
+    private fun fillExerciseList(day: DayModel) {
+        val tempList = ArrayList<ExerciseModel>()
+        day.exercises.split(",").forEach {
+            val exerciseList = resources.getStringArray(R.array.exercises)
+            val exercise = exerciseList[it.toInt()]
+            val exerciseArray =  exercise.split("|")
+            tempList.add(ExerciseModel(exerciseArray[0], exerciseList[1], exerciseList[2]))
+        }
     }
 
     companion object {
