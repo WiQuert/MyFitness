@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wiquert.myfitness.R
 import com.wiquert.myfitness.adapters.DayModel
@@ -13,10 +14,12 @@ import com.wiquert.myfitness.adapters.DaysAdapter
 import com.wiquert.myfitness.adapters.ExerciseModel
 import com.wiquert.myfitness.databinding.FragmentDaysBinding
 import com.wiquert.myfitness.utils.FragmentManager
+import com.wiquert.myfitness.utils.MainViewModel
 
 
 class DaysFragment : Fragment(), DaysAdapter.Listener {
     private lateinit var binding: FragmentDaysBinding
+    private val model: MainViewModel by activityViewModels()
   
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,8 +60,9 @@ class DaysFragment : Fragment(), DaysAdapter.Listener {
             val exerciseList = resources.getStringArray(R.array.exercises)
             val exercise = exerciseList[it.toInt()]
             val exerciseArray =  exercise.split("|")
-            tempList.add(ExerciseModel(exerciseArray[0], exerciseList[1], exerciseList[2]))
+            tempList.add(ExerciseModel(exerciseArray[0], exerciseArray[1], exerciseArray[2]))
         }
+        model.mutableListExercise.value = tempList
     }
 
     companion object {
@@ -69,6 +73,7 @@ class DaysFragment : Fragment(), DaysAdapter.Listener {
     }
 
     override fun onClick(day: DayModel) {
+        fillExerciseList(day)
         FragmentManager.setFragment(ExercisesListFragment.newInstance(), activity as AppCompatActivity)
     }
 
