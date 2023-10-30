@@ -1,6 +1,9 @@
 <resources>
+    <string name="slogan">On the road to perfection!</string>
+    <string name="day">Day:</string>
+    <string name="exercise">exercises</string>
     <string name="app_name">MyFitness</string>
-    <string name="slogan">На пути к совершенству!</string>
-    <string name="day">День:</string>
-    <string name="exercise">упражнений</string>
+    <string name="remaining">20 days remaining</string>
+    <string name="waiting_message">The exercises will begin in:</string>
+    <string name="start">Start</string>
 </resources>

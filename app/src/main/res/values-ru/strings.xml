@@ -1,0 +1,9 @@
+<resources>
+    <string name="slogan">На пути к совершенству!</string>
+    <string name="day">День:</string>
+    <string name="exercise">упражнений</string>
+    <string name="app_name">Мой фитнес</string>
+    <string name="remaining">Осталось 20 дней</string>
+    <string name="waiting_message">Упражнения начнутся через:</string>
+    <string name="start">Начать</string>
+</resources>
