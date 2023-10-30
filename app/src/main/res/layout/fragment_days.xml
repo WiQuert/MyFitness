@@ -72,7 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
-                android:text="Осталось 20 дней"
+                android:text="@string/remaining"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toTopOf="@+id/pB"
                 app:layout_constraintEnd_toEndOf="@+id/pB"
