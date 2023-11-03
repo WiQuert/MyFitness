@@ -6,8 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.wiquert.myfitness.databinding.WaitingFragmentBinding
+import com.wiquert.myfitness.utils.FragmentManager
 import com.wiquert.myfitness.utils.TimeUtils
 
 const val COUNT_DOWN_TIME = 11000L
@@ -45,7 +46,7 @@ class WaitingFragment : Fragment() {
 
 
             override fun onFinish() {
-                Toast.makeText(activity, "Done", Toast.LENGTH_LONG).show()
+                FragmentManager.setFragment(ExerciseFragment.newInstance(), activity as AppCompatActivity)
 
             }
 
