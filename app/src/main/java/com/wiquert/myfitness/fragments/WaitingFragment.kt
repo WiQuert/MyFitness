@@ -46,7 +46,8 @@ class WaitingFragment : Fragment() {
 
 
             override fun onFinish() {
-                FragmentManager.setFragment(ExerciseFragment.newInstance(), activity as AppCompatActivity)
+                FragmentManager.setFragment(ExerciseFragment.newInstance(),
+                    activity as AppCompatActivity)
 
             }
 
