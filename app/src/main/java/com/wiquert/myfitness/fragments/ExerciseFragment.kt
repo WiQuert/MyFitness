@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wiquert.myfitness.adapters.ExerciseAdapter
+import com.wiquert.myfitness.adapters.ExerciseModel
 import com.wiquert.myfitness.databinding.ExerciseFragmentBinding
 import com.wiquert.myfitness.databinding.ExercisesListFragmentBinding
 import com.wiquert.myfitness.utils.FragmentManager
@@ -17,7 +18,8 @@ import com.wiquert.myfitness.utils.MainViewModel
 
 class ExerciseFragment : Fragment() {
     private lateinit var binding: ExerciseFragmentBinding
-
+    private var exerciseCounter = 0
+    private var exList: ArrayList<ExerciseModel>? = null
     private val model: MainViewModel by activityViewModels()
 
 
@@ -37,11 +39,24 @@ class ExerciseFragment : Fragment() {
 
         model.mutableListExercise.observe(viewLifecycleOwner) {
 
+            exList = it
         }
 
     }
 
+    private fun nextExercise() {
 
+        if (exerciseCounter > exList?.size!!) {
+            showExercise()
+        } else {
+
+        }
+
+    }
+
+    private fun showExercise(exercise: ExerciseModel) = with(binding) {
+
+    }
 
 
     companion object {
@@ -50,6 +65,5 @@ class ExerciseFragment : Fragment() {
         fun newInstance() = ExerciseFragment()
 
     }
-
 
 }
