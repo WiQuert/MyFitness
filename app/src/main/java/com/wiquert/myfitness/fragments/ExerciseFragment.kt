@@ -72,6 +72,9 @@ class ExerciseFragment : Fragment() {
 
     private fun setExerciseType(exercise: ExerciseModel) {
         if(exercise.time.startsWith("x")) {
+            binding.progressBar.max = 10
+            binding.progressBar.progress = 10
+            timer?.cancel()
             binding.tvTime.text = exercise.time
         } else {
             startTimer(exercise)
