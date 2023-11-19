@@ -7,14 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.wiquert.myfitness.adapters.ExerciseAdapter
 import com.wiquert.myfitness.adapters.ExerciseModel
 import com.wiquert.myfitness.databinding.ExerciseFragmentBinding
 import androidx.fragment.app.activityViewModels
-import com.wiquert.myfitness.databinding.ExercisesListFragmentBinding
-import com.wiquert.myfitness.utils.FragmentManager
+import com.wiquert.myfitness.R
 import com.wiquert.myfitness.utils.MainViewModel
 import com.wiquert.myfitness.utils.TimeUtils
 import pl.droidsonroids.gif.GifDrawable
@@ -59,6 +55,7 @@ class ExerciseFragment : Fragment() {
             val ex = exList?.get(exerciseCounter++) ?: return
             showExercise(ex)
             setExerciseType(ex)
+            showNextExercise()
         } else {
             Toast.makeText(activity, "Done", Toast.LENGTH_LONG).show()
         }
@@ -81,7 +78,31 @@ class ExerciseFragment : Fragment() {
         }
     }
 
-        private fun startTimer(exercise: ExerciseModel) = with(binding) {
+    private fun showNextExercise() = with(binding) {
+
+        if (exerciseCounter < exList?.size!!) {
+            val ex = exList?.get(exerciseCounter) ?: return
+            imNext.setImageDrawable(GifDrawable(root.context.assets, ex.image))
+            setTimeType(ex)
+        } else {
+            imNext.setImageDrawable(GifDrawable(root.context.assets, "congrats-congratulations.gif"))
+            tvNextName.text = getString(R.string.done)
+        }
+
+    }
+
+    private fun setTimeType(ex: ExerciseModel) {
+        if(ex.time.startsWith("x")) {
+            binding.tvNextName.text = ex.time
+        } else {
+        val name = ex.name + ": ${TimeUtils.getTime(ex.time.toLong() * 1000)}"
+            binding.tvNextName.text = name
+        }
+
+    }
+
+
+    private fun startTimer(exercise: ExerciseModel) = with(binding) {
             progressBar.max = exercise.time.toInt() * 1000
             timer?.cancel()
             timer = object : CountDownTimer(exercise.time.toLong() * 1000,1){
