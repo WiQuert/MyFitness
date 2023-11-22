@@ -6,11 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.wiquert.myfitness.adapters.ExerciseModel
 import com.wiquert.myfitness.databinding.ExerciseFragmentBinding
 import androidx.fragment.app.activityViewModels
 import com.wiquert.myfitness.R
+import com.wiquert.myfitness.utils.FragmentManager
 import com.wiquert.myfitness.utils.MainViewModel
 import com.wiquert.myfitness.utils.TimeUtils
 import pl.droidsonroids.gif.GifDrawable
@@ -57,7 +58,7 @@ class ExerciseFragment : Fragment() {
             setExerciseType(ex)
             showNextExercise()
         } else {
-            Toast.makeText(activity, "Done", Toast.LENGTH_LONG).show()
+            FragmentManager.setFragment(DayFinishFragment.newInstance(), activity as AppCompatActivity)
         }
 
     }
