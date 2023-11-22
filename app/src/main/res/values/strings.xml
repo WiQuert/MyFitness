@@ -8,4 +8,5 @@
     <string name="start">Start</string>
     <string name="next">Next</string>
     <string name="done">Done</string>
+    <string name="training_day_completed">Training day completed!</string>
 </resources>
