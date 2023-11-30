@@ -9,4 +9,7 @@
     <string name="next">Следующее</string>
     <string name="done">Готово</string>
     <string name="training_day_completed">Тренировочный день закончен!</string>
+    <string name="fitness_days">Дни тренировок</string>
+    <string name="exercises">Упражнения</string>
+    <string name="waiting">Приготовьтесь</string>
 </resources>
