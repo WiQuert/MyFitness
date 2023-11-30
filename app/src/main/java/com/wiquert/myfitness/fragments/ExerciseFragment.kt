@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import com.wiquert.myfitness.adapters.ExerciseModel
 import com.wiquert.myfitness.databinding.ExerciseFragmentBinding
@@ -22,6 +23,7 @@ class ExerciseFragment : Fragment() {
     private var exerciseCounter = 0
     private var exList: ArrayList<ExerciseModel>? = null
     private val model: MainViewModel by activityViewModels()
+    private var ab: ActionBar? = null
     private var timer: CountDownTimer? = null
 
 
@@ -38,6 +40,7 @@ class ExerciseFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        ab = (activity as AppCompatActivity).supportActionBar
 
         model.mutableListExercise.observe(viewLifecycleOwner) {
 
@@ -66,6 +69,8 @@ class ExerciseFragment : Fragment() {
     private fun showExercise(exercise: ExerciseModel) = with(binding) {
         imMain.setImageDrawable(GifDrawable(root.context.assets, exercise.image))
         tvName.text = exercise.name
+        val title = "$exerciseCounter / ${exList?.size}"
+        ab?.title = title
     }
 
     private fun setExerciseType(exercise: ExerciseModel) {

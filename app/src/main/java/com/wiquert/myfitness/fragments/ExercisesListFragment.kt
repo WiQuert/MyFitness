@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.wiquert.myfitness.R
 import com.wiquert.myfitness.adapters.ExerciseAdapter
 import com.wiquert.myfitness.databinding.ExercisesListFragmentBinding
 import com.wiquert.myfitness.utils.FragmentManager
@@ -18,6 +20,8 @@ class ExercisesListFragment : Fragment() {
     private lateinit var binding: ExercisesListFragmentBinding
     private lateinit var adapter: ExerciseAdapter
     private val model: MainViewModel by activityViewModels()
+    private var ab: ActionBar? = null
+
 
 
     override fun onCreateView(
@@ -41,6 +45,8 @@ class ExercisesListFragment : Fragment() {
 
 
     private fun init() = with(binding) {
+        ab = (activity as AppCompatActivity).supportActionBar
+        ab?.title = getString(R.string.exercises)
         adapter = ExerciseAdapter()
         rcView.layoutManager = LinearLayoutManager(activity)
         rcView.adapter = adapter

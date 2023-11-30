@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import com.wiquert.myfitness.R
 import com.wiquert.myfitness.databinding.WaitingFragmentBinding
 import com.wiquert.myfitness.utils.FragmentManager
 import com.wiquert.myfitness.utils.TimeUtils
@@ -15,6 +17,7 @@ const val COUNT_DOWN_TIME = 11000L
 class WaitingFragment : Fragment() {
     private lateinit var binding: WaitingFragmentBinding
     private lateinit var timer: CountDownTimer
+    private var ab: ActionBar? = null
 
 
 
@@ -30,6 +33,9 @@ class WaitingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        ab = (activity as AppCompatActivity).supportActionBar
+        ab?.title = getString(R.string.waiting)
 
         binding.pBar.max = COUNT_DOWN_TIME.toInt()
         startTimer()
