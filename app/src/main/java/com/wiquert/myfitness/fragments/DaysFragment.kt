@@ -54,7 +54,7 @@ class DaysFragment : Fragment(), DaysAdapter.Listener {
 
         val tArray = ArrayList<DayModel>()
         resources.getStringArray(R.array.day_exercises).forEach {
-            tArray.add(DayModel(it, false))
+            tArray.add(DayModel(it, 0, false))
         }
         return tArray
     }
@@ -79,6 +79,7 @@ class DaysFragment : Fragment(), DaysAdapter.Listener {
 
     override fun onClick(day: DayModel) {
         fillExerciseList(day)
+        model.currentDay = day.dayNumber
         FragmentManager.setFragment(ExercisesListFragment.newInstance(), activity as AppCompatActivity)
     }
 
