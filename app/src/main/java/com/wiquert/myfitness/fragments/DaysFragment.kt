@@ -65,7 +65,7 @@ class DaysFragment : Fragment(), DaysAdapter.Listener {
             val exerciseList = resources.getStringArray(R.array.exercises)
             val exercise = exerciseList[it.toInt()]
             val exerciseArray =  exercise.split("|")
-            tempList.add(ExerciseModel(exerciseArray[0], exerciseArray[1], exerciseArray[2]))
+            tempList.add(ExerciseModel(exerciseArray[0], exerciseArray[1], false, exerciseArray[2]))
         }
         model.mutableListExercise.value = tempList
     }
