@@ -13,4 +13,5 @@
     <string name="waiting">Get ready</string>
     <string name="remaining">Remaining</string>
     <string name="days">days</string>
+    <string name="reset">Reset all</string>
 </resources>
