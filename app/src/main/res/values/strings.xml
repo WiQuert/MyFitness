@@ -3,6 +3,7 @@
     <string name="day">Day:</string>
     <string name="exercise">exercises</string>
     <string name="app_name">MyFitness</string>
+    <string name="remaining">20 days remaining</string>
     <string name="waiting_message">The exercises will begin in:</string>
     <string name="start">Start</string>
     <string name="next">Next</string>
@@ -11,7 +12,10 @@
     <string name="fitness_days">Fitness days</string>
     <string name="exercises">Exercises</string>
     <string name="waiting">Get ready</string>
-    <string name="remaining">Remaining</string>
     <string name="days">days</string>
-    <string name="reset">Reset all</string>
+    <string name="reset">Reset</string>
+    <string name="cancel">Cancel</string>
+    <string name="alert">Attention!</string>
+    <string name="reset_days_message">Do you really want to reset all the days of your training? All progress will be lost</string>
+    <string name="reset_one_day_message">Do you really want to reset this day and repeat the exercises?</string>
 </resources>
