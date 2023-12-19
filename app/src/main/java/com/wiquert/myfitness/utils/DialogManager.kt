@@ -4,7 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import com.wiquert.myfitness.R
 
-class DialogManager {
+object DialogManager {
     fun showDialog(context: Context, mId: Int, listener: Listener) {
         val builder = AlertDialog.Builder(context)
         var dialog: AlertDialog? = null
@@ -14,11 +14,11 @@ class DialogManager {
             listener.onClick()
             dialog?.dismiss()
         }
-        builder.setPositiveButton(R.string.cancel) { _, _ ->
-            listener.onClick()
+        builder.setNegativeButton(R.string.cancel) { _, _ ->
             dialog?.dismiss()
         }
         dialog = builder.create()
+        dialog.show()
     }
 
     interface Listener {
